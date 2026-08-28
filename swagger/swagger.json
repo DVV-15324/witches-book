@@ -1,0 +1,447 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "new_example API",
+    "version": "1.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/v1/book/create": {
+      "post": {
+        "summary": "Create Book",
+        "description": "Create a new Book",
+        "tags": [
+          "book"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "description": "User-Agent",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language (e.g., vi-VN, en-US)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "X-Timezone",
+            "in": "header",
+            "description": "Timezone (e.g., Asia/Ho_Chi_Minh)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "DPoP access token for authentication",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "DPoP",
+            "in": "header",
+            "description": "DPoP proof JWT",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Request body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created successfully",
+            "schema": {
+              "$ref": "#/definitions/AppResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/AppResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/book/delete/:id": {
+      "delete": {
+        "summary": "Delete Book",
+        "description": "Delete a Book by ID",
+        "tags": [
+          "book"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "description": "User-Agent",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language (e.g., vi-VN, en-US)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "X-Timezone",
+            "in": "header",
+            "description": "Timezone (e.g., Asia/Ho_Chi_Minh)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "DPoP access token for authentication",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "DPoP",
+            "in": "header",
+            "description": "DPoP proof JWT",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Book ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted successfully",
+            "schema": {
+              "$ref": "#/definitions/AppResponse"
+            }
+          },
+          "404": {
+            "description": "Book not found",
+            "schema": {
+              "$ref": "#/definitions/AppResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/book/get": {
+      "post": {
+        "summary": "Get Book by ID",
+        "description": "Get Book details by ID",
+        "tags": [
+          "book"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "description": "User-Agent",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language (e.g., vi-VN, en-US)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "X-Timezone",
+            "in": "header",
+            "description": "Timezone (e.g., Asia/Ho_Chi_Minh)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "DPoP access token for authentication",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "DPoP",
+            "in": "header",
+            "description": "DPoP proof JWT",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Book ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book found",
+            "schema": {
+              "$ref": "#/definitions/AppResponse"
+            }
+          },
+          "404": {
+            "description": "Book not found",
+            "schema": {
+              "$ref": "#/definitions/AppResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/book/get_all": {
+      "post": {
+        "summary": "Get all Books",
+        "description": "Get list of all Books with pagination",
+        "tags": [
+          "book"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "description": "User-Agent",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language (e.g., vi-VN, en-US)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "X-Timezone",
+            "in": "header",
+            "description": "Timezone (e.g., Asia/Ho_Chi_Minh)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "DPoP access token for authentication",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "DPoP",
+            "in": "header",
+            "description": "DPoP proof JWT",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Items per page",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search keyword",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort field",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sort order (asc/desc)",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Books",
+            "schema": {
+              "$ref": "#/definitions/AppResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/book/update/:id": {
+      "put": {
+        "summary": "Update Book",
+        "description": "Update an existing Book",
+        "tags": [
+          "book"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "description": "User-Agent",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Preferred language (e.g., vi-VN, en-US)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "X-Timezone",
+            "in": "header",
+            "description": "Timezone (e.g., Asia/Ho_Chi_Minh)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "DPoP access token for authentication",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "DPoP",
+            "in": "header",
+            "description": "DPoP proof JWT",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Book ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated successfully",
+            "schema": {
+              "$ref": "#/definitions/AppResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/AppResponse"
+            }
+          },
+          "404": {
+            "description": "Book not found",
+            "schema": {
+              "$ref": "#/definitions/AppResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AppResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object"
+        },
+        "message": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "timestamp": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "v1",
+      "description": "API Version 1"
+    },
+    {
+      "name": "book",
+      "description": "Book endpoints"
+    }
+  ]
+}
