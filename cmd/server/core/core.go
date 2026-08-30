@@ -11,8 +11,8 @@ import (
 	redis_driver "github.com/ulule/limiter/v3/drivers/store/redis"
 	"gorm.io/gorm"
 	"log"
-	w_redis "new_example/internal/pkg/redis"
 	"new_example/internal/shared/utils"
+	w_redis "new_example/pkg/redis"
 	"path/filepath"
 	"time"
 )
