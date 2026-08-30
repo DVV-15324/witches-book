@@ -1,34 +1,34 @@
 package core
 
 import (
-	"new_example/internal/shared/utils"
-	w_redis "new_example/pkg/redis"
 	"fmt"
 	wcmd_utils "github.com/DVV-15324/witches/cmd/utils"
 	w_db "github.com/DVV-15324/witches/pkg/core/database/connect/sql"
 	"github.com/DVV-15324/witches/pkg/core/response/logger"
 	w_utils "github.com/DVV-15324/witches/pkg/core/utils"
+	"github.com/gin-gonic/gin"
 	"github.com/ulule/limiter/v3"
 	redis_driver "github.com/ulule/limiter/v3/drivers/store/redis"
 	"gorm.io/gorm"
 	"log"
+	w_redis "new_example/internal/pkg/redis"
+	"new_example/internal/shared/utils"
 	"path/filepath"
 	"time"
-	"github.com/gin-gonic/gin"
 )
 
 type CoreServices struct {
-	Config    *wcmd_utils.Config
-	Logger    *logger.ModelLogger
-	DB        *gorm.DB
-	Hash      *w_utils.Hash
-	Redis     *w_redis.RedisClient
-	Limiter   *limiter.Limiter
-	JWT       *w_utils.JwtService
-	Session   *w_utils.SessionService
-	Blacklist *w_utils.BlacklistService
-	Helper    *w_utils.Helper
-	TxManager *w_utils.TxManager
+	Config     *wcmd_utils.Config
+	Logger     *logger.ModelLogger
+	DB         *gorm.DB
+	Hash       *w_utils.Hash
+	Redis      *w_redis.RedisClient
+	Limiter    *limiter.Limiter
+	JWT        *w_utils.JwtService
+	Session    *w_utils.SessionService
+	Blacklist  *w_utils.BlacklistService
+	Helper     *w_utils.Helper
+	TxManager  *w_utils.TxManager
 	Middleware gin.HandlerFunc
 }
 
@@ -77,17 +77,17 @@ func NewCoreServices(cfg *wcmd_utils.Config) *CoreServices {
 	hash := new(w_utils.Hash)
 
 	return &CoreServices{
-		Config:    cfg,
-		Logger:    logg,
-		DB:        db.DB,
-		Redis:     redisClient,
-		Limiter:   limiterInstance,
-		JWT:       jwt,
-		Session:   sessionService,
-		Blacklist: blacklistService,
-		Helper:    helper,
-		TxManager: txManager,
-		Hash:      hash,
+		Config:     cfg,
+		Logger:     logg,
+		DB:         db.DB,
+		Redis:      redisClient,
+		Limiter:    limiterInstance,
+		JWT:        jwt,
+		Session:    sessionService,
+		Blacklist:  blacklistService,
+		Helper:     helper,
+		TxManager:  txManager,
+		Hash:       hash,
 		Middleware: gin.HandlerFunc(func(ctx *gin.Context) { ctx.Next() }),
 	}
 }
