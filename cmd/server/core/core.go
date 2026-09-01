@@ -21,12 +21,8 @@ type CoreServices struct {
 	Config     *wcmd_utils.Config
 	Logger     *logger.ModelLogger
 	DB         *gorm.DB
-	Hash       *w_utils.Hash
 	Redis      *w_redis.RedisClient
 	Limiter    *limiter.Limiter
-	JWT        *w_utils.JwtService
-	Session    *w_utils.SessionService
-	Blacklist  *w_utils.BlacklistService
 	Helper     *w_utils.Helper
 	TxManager  *w_utils.TxManager
 	Middleware gin.HandlerFunc
@@ -68,13 +64,8 @@ func NewCoreServices(cfg *wcmd_utils.Config) *CoreServices {
 	limiterInstance := limiter.New(store, rate)
 
 	// Services
-	jwt := w_utils.NewJwtService(cfg)
-	sessionService := w_utils.NewSessionService(redisClient.GetClient(), cfg.RefreshTokenTTL, cfg.IdleTimeout)
-	blacklistService := w_utils.NewBlacklistService(redisClient.GetClient(), cfg)
 	helper := w_utils.NewHelper(cfg)
 	txManager := w_utils.NewTxManager(db.DB)
-
-	hash := new(w_utils.Hash)
 
 	return &CoreServices{
 		Config:     cfg,
@@ -82,12 +73,8 @@ func NewCoreServices(cfg *wcmd_utils.Config) *CoreServices {
 		DB:         db.DB,
 		Redis:      redisClient,
 		Limiter:    limiterInstance,
-		JWT:        jwt,
-		Session:    sessionService,
-		Blacklist:  blacklistService,
 		Helper:     helper,
 		TxManager:  txManager,
-		Hash:       hash,
 		Middleware: gin.HandlerFunc(func(ctx *gin.Context) { ctx.Next() }),
 	}
 }

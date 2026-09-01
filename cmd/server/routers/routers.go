@@ -46,4 +46,5 @@ func initModule(modules *Modules, gen *w_handl.SwaggerGenerator) {
 	gen.AddTag("book", "Book endpoints")
 	modules.Book.RegisterPublicRoutes(gen)
 	modules.Book.RegisterProtectedRoutes(gen)
+
 }

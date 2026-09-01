@@ -3,7 +3,7 @@ module new_example
 go 1.25.12
 
 require (
-	github.com/DVV-15324/witches v1.1.1-0.20260827160840-80663cff0c0a
+	github.com/DVV-15324/witches v1.1.1-0.20260901004453-b93f82dae525
 	github.com/btcsuite/btcutil v1.0.2
 	github.com/gin-gonic/gin v1.12.0
 	github.com/mailru/easyjson v0.9.2
@@ -31,7 +31,6 @@ require (
 	github.com/go-sql-driver/mysql v1.10.0 // indirect
 	github.com/goccy/go-json v0.10.6 // indirect
 	github.com/goccy/go-yaml v1.19.2 // indirect
-	github.com/golang-jwt/jwt/v5 v5.3.1 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/golang-sql/sqlexp v0.1.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
