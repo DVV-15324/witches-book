@@ -5,6 +5,7 @@ import (
 	handler "github.com/DVV-15324/witches-book/internal/book/handler"
 	"github.com/DVV-15324/witches-book/internal/book/repository"
 	usecase_book "github.com/DVV-15324/witches-book/internal/book/usecase"
+	pkg "github.com/DVV-15324/witches-book/pkg"
 	w_handl "github.com/DVV-15324/witches/pkg/core/handler"
 	w_resp "github.com/DVV-15324/witches/pkg/core/response"
 	"github.com/ulule/limiter/v3"
@@ -20,6 +21,7 @@ type BookModule struct {
 func NewBookModule(
 	core *core.CoreServices,
 ) *BookModule {
+	pkg.HelloIamDinhVietVu{}.Say()
 	repo := repository.NewBookRepository(core.DB, core.TxManager, core.Redis.GetClient())
 	usecase := usecase_book.NewBookUsecase(repo)
 	handler := handler.NewBookHandler(usecase, core.Logger, core.Config)
