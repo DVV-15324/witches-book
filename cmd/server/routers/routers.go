@@ -2,12 +2,12 @@ package routers
 
 import (
 	"fmt"
+	"github.com/DVV-15324/witches-book/cmd/server/core"
+	"github.com/DVV-15324/witches-book/internal/shared/middleware"
 	w_handl "github.com/DVV-15324/witches/pkg/core/handler"
 	w_utils "github.com/DVV-15324/witches/pkg/core/utils"
 	"github.com/gin-gonic/gin"
 	"log"
-	"new_example/cmd/server/core"
-	"new_example/internal/shared/middleware"
 )
 
 func RegisterRoutes(r *gin.Engine, core *core.CoreServices, modules *Modules) {
@@ -34,7 +34,7 @@ func RegisterRoutes(r *gin.Engine, core *core.CoreServices, modules *Modules) {
 
 func initSwagger(r *gin.Engine, core *core.CoreServices, rateLimitMiddleware *middleware.LimitMiddleWare) *w_handl.SwaggerGenerator {
 	address := fmt.Sprintf("%s:%d", core.Config.Host, core.Config.Port)
-	gen := w_handl.NewSwaggerGenerator("new_example API", "1.0", address, "/")
+	gen := w_handl.NewSwaggerGenerator("github.com/DVV-15324/witches-book API", "1.0", address, "/")
 	gen.SetEngine(r)
 	gen.SetRateLimitMiddleware(rateLimitMiddleware)
 	gen.SetRedisClient(core.Redis.GetClient())

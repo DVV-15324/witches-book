@@ -1,7 +1,7 @@
 package main
 
 import (
-	server "new_example/cmd"
+	server "github.com/DVV-15324/witches-book/cmd"
 )
 
 func main() {

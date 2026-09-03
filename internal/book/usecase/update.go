@@ -2,12 +2,12 @@ package usecase
 
 import (
 	"context"
-	"time"
+	domainBook "github.com/DVV-15324/witches-book/internal/shared/domain"
 	w_resp "github.com/DVV-15324/witches/pkg/core/response"
-	domainBook "new_example/internal/shared/domain"
+	"time"
 )
 
-func (u *BookUsecase) Update(ctx context.Context, id int, req *domainBook.Book) (*w_resp.AppError) {
+func (u *BookUsecase) Update(ctx context.Context, id int, req *domainBook.Book) *w_resp.AppError {
 	existing, err := u.repo.GetByID(ctx, id)
 	if err != nil {
 		resp := w_resp.NewAppError(500, err, time.Now())
@@ -21,7 +21,7 @@ func (u *BookUsecase) Update(ctx context.Context, id int, req *domainBook.Book) 
 	err = u.repo.Update(ctx, existing, id)
 	if err != nil {
 		resp := w_resp.NewAppError(500, err, time.Now())
-		return  resp
+		return resp
 	}
 
 	return nil

@@ -2,8 +2,8 @@ package usecase
 
 import (
 	"context"
+	modelBook "github.com/DVV-15324/witches-book/internal/shared/domain"
 	w_resp "github.com/DVV-15324/witches/pkg/core/response"
-	modelBook "new_example/internal/shared/domain"
 	w_utils "github.com/DVV-15324/witches/pkg/core/utils"
 	"time"
 )

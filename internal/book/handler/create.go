@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"new_example/internal/book/dto/request"
-	domainBook "new_example/internal/shared/domain"
+	"github.com/DVV-15324/witches-book/internal/book/dto/request"
+	domainBook "github.com/DVV-15324/witches-book/internal/shared/domain"
 	w_resp "github.com/DVV-15324/witches/pkg/core/response"
 	"github.com/gin-gonic/gin"
 	"time"

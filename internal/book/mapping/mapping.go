@@ -1,10 +1,10 @@
 package mapping
 
 import (
-	domainBook "new_example/internal/shared/domain"
-	"new_example/internal/shared/utils"
-	dtoBook "new_example/internal/book/dto/response"
-	modelBook "new_example/internal/book/model"
+	dtoBook "github.com/DVV-15324/witches-book/internal/book/dto/response"
+	modelBook "github.com/DVV-15324/witches-book/internal/book/model"
+	domainBook "github.com/DVV-15324/witches-book/internal/shared/domain"
+	"github.com/DVV-15324/witches-book/internal/shared/utils"
 	w_utils "github.com/DVV-15324/witches/pkg/core/utils"
 )
 

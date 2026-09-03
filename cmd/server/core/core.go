@@ -2,6 +2,8 @@ package core
 
 import (
 	"fmt"
+	"github.com/DVV-15324/witches-book/internal/shared/utils"
+	w_redis "github.com/DVV-15324/witches-book/pkg/redis"
 	wcmd_utils "github.com/DVV-15324/witches/cmd/utils"
 	w_db "github.com/DVV-15324/witches/pkg/core/database/connect/sql"
 	"github.com/DVV-15324/witches/pkg/core/response/logger"
@@ -11,8 +13,6 @@ import (
 	redis_driver "github.com/ulule/limiter/v3/drivers/store/redis"
 	"gorm.io/gorm"
 	"log"
-	"new_example/internal/shared/utils"
-	w_redis "new_example/pkg/redis"
 	"path/filepath"
 	"time"
 )

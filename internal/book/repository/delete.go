@@ -2,7 +2,7 @@ package repository
 
 import (
 	"context"
-	modelBook "new_example/internal/book/model"
+	modelBook "github.com/DVV-15324/witches-book/internal/book/model"
 )
 
 func (r *BookRepository) Delete(ctx context.Context, id int) error {

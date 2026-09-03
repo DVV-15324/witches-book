@@ -1,10 +1,10 @@
 package book
 
 import (
-	core "new_example/cmd/server/core"
-	handler "new_example/internal/book/handler"
-	"new_example/internal/book/repository"
-	usecase_book "new_example/internal/book/usecase"
+	core "github.com/DVV-15324/witches-book/cmd/server/core"
+	handler "github.com/DVV-15324/witches-book/internal/book/handler"
+	"github.com/DVV-15324/witches-book/internal/book/repository"
+	usecase_book "github.com/DVV-15324/witches-book/internal/book/usecase"
 	w_handl "github.com/DVV-15324/witches/pkg/core/handler"
 	w_resp "github.com/DVV-15324/witches/pkg/core/response"
 	"github.com/ulule/limiter/v3"

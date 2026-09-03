@@ -2,10 +2,10 @@ package repository
 
 import (
 	"context"
-	"new_example/internal/book/mapping"
+	"github.com/DVV-15324/witches-book/internal/book/mapping"
+	modelBook "github.com/DVV-15324/witches-book/internal/book/model"
+	domainBook "github.com/DVV-15324/witches-book/internal/shared/domain"
 	w_utils "github.com/DVV-15324/witches/pkg/core/utils"
-	domainBook "new_example/internal/shared/domain"
-	modelBook "new_example/internal/book/model"
 )
 
 func (r *BookRepository) GetByID(ctx context.Context, id int) (*domainBook.Book, error) {

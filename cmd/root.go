@@ -3,11 +3,11 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"github.com/DVV-15324/witches-book/cmd/server/config"
+	routes "github.com/DVV-15324/witches-book/cmd/server/routers"
 	w_utils "github.com/DVV-15324/witches/pkg/core/utils"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cobra"
-	"new_example/cmd/server/config"
-	routes "new_example/cmd/server/routers"
 )
 
 var root = &cobra.Command{

@@ -2,13 +2,13 @@ package usecase
 
 import (
 	"context"
-	"time"
+	domainBook "github.com/DVV-15324/witches-book/internal/shared/domain"
 	w_resp "github.com/DVV-15324/witches/pkg/core/response"
-	domainBook "new_example/internal/shared/domain"
+	"time"
 )
 
-func (u *BookUsecase) Create(ctx context.Context, req *domainBook.Book) (*w_resp.AppError) {
-	 err := u.repo.Create(ctx, req)
+func (u *BookUsecase) Create(ctx context.Context, req *domainBook.Book) *w_resp.AppError {
+	err := u.repo.Create(ctx, req)
 	if err != nil {
 		resp := w_resp.NewAppError(500, err, time.Now())
 		return resp

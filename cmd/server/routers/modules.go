@@ -1,8 +1,8 @@
 package routers
 
 import (
-	"new_example/cmd/server/core"
-	"new_example/internal/book"
+	"github.com/DVV-15324/witches-book/cmd/server/core"
+	"github.com/DVV-15324/witches-book/internal/book"
 )
 
 type Modules struct {

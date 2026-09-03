@@ -2,8 +2,8 @@ package repository
 
 import (
 	"context"
-	"new_example/internal/book/mapping"
-	domainBook "new_example/internal/shared/domain"
+	"github.com/DVV-15324/witches-book/internal/book/mapping"
+	domainBook "github.com/DVV-15324/witches-book/internal/shared/domain"
 )
 
 func (r *BookRepository) Update(ctx context.Context, e *domainBook.Book, id int) error {

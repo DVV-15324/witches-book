@@ -1,4 +1,4 @@
-module new_example
+module github.com/DVV-15324/witches-book
 
 go 1.25.12
 
