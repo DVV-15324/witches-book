@@ -22,9 +22,9 @@ func NewBookModule(
 	core *core.CoreServices,
 ) *BookModule {
 	pkg.HelloIamDinhVietVu{}.Say()
-	repo := repository.NewBookRepository(core.DB, core.TxManager, core.Redis.GetClient())
+	repo := repository.NewBookRepository(core)
 	usecase := usecase_book.NewBookUsecase(repo)
-	handler := handler.NewBookHandler(usecase, core.Logger, core.Config)
+	handler := handler.NewBookHandler(core, usecase)
 	return &BookModule{
 		Core:    core,
 		Handler: handler,

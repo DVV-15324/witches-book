@@ -2,22 +2,19 @@ package repository
 
 import (
 	"context"
+
+	"github.com/DVV-15324/witches-book/cmd/server/core"
 	u_tx "github.com/DVV-15324/witches/pkg/core/utils"
-	"github.com/redis/go-redis/v9"
 	"gorm.io/gorm"
 )
 
 type BookRepository struct {
-	db        *gorm.DB
-	redis     *redis.Client
-	TxManager *u_tx.TxManager
+	core *core.CoreServices
 }
 
-func NewBookRepository(db *gorm.DB, txManager *u_tx.TxManager, redis *redis.Client) *BookRepository {
+func NewBookRepository(core *core.CoreServices) *BookRepository {
 	return &BookRepository{
-		db:        db,
-		TxManager: txManager,
-		redis:     redis,
+		core: core,
 	}
 }
 
@@ -26,5 +23,5 @@ func (a *BookRepository) getDB(ctx context.Context) *gorm.DB {
 	if err == nil {
 		return tx // Dùng transaction
 	}
-	return a.db // Dùng db thường
+	return a.core.DB // Dùng db thường
 }

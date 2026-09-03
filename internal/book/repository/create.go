@@ -8,6 +8,6 @@ import (
 
 func (r *BookRepository) Create(ctx context.Context, e *domainBook.Book) error {
 	model := mapping.FromDomainToModelBook(e)
-	err := r.db.WithContext(ctx).Create(model).Error
+	err := r.core.DB.WithContext(ctx).Create(model).Error
 	return err
 }

@@ -2,10 +2,9 @@ package handler
 
 import (
 	"context"
+	"github.com/DVV-15324/witches-book/cmd/server/core"
 	domainBook "github.com/DVV-15324/witches-book/internal/shared/domain"
-	wcmd_utils "github.com/DVV-15324/witches/cmd/utils"
 	w_resp "github.com/DVV-15324/witches/pkg/core/response"
-	"github.com/DVV-15324/witches/pkg/core/response/logger"
 	w_utils "github.com/DVV-15324/witches/pkg/core/utils"
 )
 
@@ -17,16 +16,14 @@ type IBookUsecase interface {
 	Delete(ctx context.Context, id int) *w_resp.AppError
 }
 type BookHandler struct {
-	Log     *logger.ModelLogger
+	core    *core.CoreServices
 	usecase IBookUsecase
-	Cfg     *wcmd_utils.Config
 }
 
 // NewBookHandler - Constructor
-func NewBookHandler(usecase IBookUsecase, log *logger.ModelLogger, Cfg *wcmd_utils.Config) *BookHandler {
+func NewBookHandler(core *core.CoreServices, usecase IBookUsecase) *BookHandler {
 	return &BookHandler{
 		usecase: usecase,
-		Log:     log,
-		Cfg:     Cfg,
+		core:    core,
 	}
 }

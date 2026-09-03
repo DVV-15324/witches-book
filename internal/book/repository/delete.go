@@ -6,5 +6,5 @@ import (
 )
 
 func (r *BookRepository) Delete(ctx context.Context, id int) error {
-	return r.db.WithContext(ctx).Delete(&modelBook.Book{}, id).Error
+	return r.core.DB.WithContext(ctx).Delete(&modelBook.Book{}, id).Error
 }

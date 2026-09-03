@@ -10,7 +10,7 @@ import (
 
 func (r *BookRepository) GetByID(ctx context.Context, id int) (*domainBook.Book, error) {
 	var e modelBook.Book
-	err := r.db.WithContext(ctx).First(&e, id).Error
+	err := r.core.DB.WithContext(ctx).First(&e, id).Error
 	domain := mapping.FromModelToDomainBook(&e)
 	return domain, err
 }
@@ -19,7 +19,7 @@ func (r *BookRepository) GetAll(ctx context.Context, req *w_utils.PaginationRequ
 	var list []*modelBook.Book
 	var total int64
 
-	query := r.db.WithContext(ctx).Model(&modelBook.Book{})
+	query := r.core.DB.WithContext(ctx).Model(&modelBook.Book{})
 
 	// Search filter
 	if req.Search != "" {
