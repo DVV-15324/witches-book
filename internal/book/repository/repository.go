@@ -1,0 +1,26 @@
+package repository
+
+import (
+	"context"
+	"github.com/DVV-15324/witches-book/cmd/server/core"
+	u_tx "github.com/DVV-15324/witches/pkg/core/utils"
+	"gorm.io/gorm"
+)
+
+type BookRepository struct {
+	core *core.CoreServices
+}
+
+func NewBookRepository(core *core.CoreServices) *BookRepository {
+	return &BookRepository{
+		core: core,
+	}
+}
+
+func (a *BookRepository) getDB(ctx context.Context) *gorm.DB {
+	tx, err := u_tx.GetTxFromContext(ctx)
+	if err == nil {
+		return tx // Dùng transaction
+	}
+	return a.core.DB // Dùng db thường
+}

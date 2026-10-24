@@ -1,0 +1,29 @@
+package handler
+
+import (
+	"context"
+	"github.com/DVV-15324/witches-book/cmd/server/core"
+	domainBook "github.com/DVV-15324/witches-book/pkg/shared/domain"
+	w_resp "github.com/DVV-15324/witches/pkg/core/response"
+	w_utils "github.com/DVV-15324/witches/pkg/core/utils"
+)
+
+type IBookUsecase interface {
+	Create(ctx context.Context, req *domainBook.Book) *w_resp.AppError
+	GetByID(ctx context.Context, id int) (*domainBook.Book, *w_resp.AppError)
+	GetAll(ctx context.Context, req *w_utils.PaginationRequest) ([]*domainBook.Book, int64, *w_resp.AppError)
+	Update(ctx context.Context, id int, req *domainBook.Book) *w_resp.AppError
+	Delete(ctx context.Context, id int) *w_resp.AppError
+}
+type BookHandler struct {
+	core    *core.CoreServices
+	usecase IBookUsecase
+}
+
+// NewBookHandler - Constructor
+func NewBookHandler(core *core.CoreServices, usecase IBookUsecase) *BookHandler {
+	return &BookHandler{
+		usecase: usecase,
+		core:    core,
+	}
+}
